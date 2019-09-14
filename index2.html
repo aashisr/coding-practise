@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Index 2</title>
+        <style>
+            .wrapper {
+                display: grid;
+                /* Use fractions so that margins does not interfere */
+                /* grid-template-columns: 1fr 2fr 1fr; */
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 1em;
+                /* Auto rows sets the height */
+                /* grid-auto-rows: 100px; */
+                /* Default or minimum height is 100 px. Maximum is auto */
+                grid-auto-rows: minmax(100px, auto);
+            }
+
+            .wrapper > div {
+                background: #eee;
+                padding: 1em;
+            }
+
+            .wrapper > div:nth-child(odd) {
+                background: #ddd;
+            }
+
+            .nested {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-auto-rows: 70px;
+                grid-gap: 1em;
+            }
+
+            .nested > div {
+                border: #333 1px solid;
+                padding: 1em;
+            }
+
+            table {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div>
+                Lorem ipsum dolor sit.
+            </div>
+            <div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit in doloremque veniam earum quae iste modi, beatae fugit quia
+                laboriosam, voluptatum molestiae reprehenderit! Harum nisi sed voluptates. Illo, magnam nostrum et quas ipsam ratione velit, laborum
+                doloremque culpa, minus voluptatibus.
+            </div>
+            <div class="nested">
+                <div>
+                    Nested
+                </div>
+                <div>
+                    Nested
+                </div>
+                <div>
+                    Nested
+                </div>
+                <div>
+                    Nested
+                </div>
+                <div>
+                    Nested
+                </div>
+                <div>
+                    Nested
+                </div>
+                <div>
+                    Nested
+                </div>
+                <div>
+                    Nested
+                </div>
+            </div>
+            <div>
+                Lorem ipsum dolor sit.
+            </div>
+            <div>
+                Lorem ipsum dolor sit.
+            </div>
+            <div>
+                Lorem ipsum dolor sit.
+            </div>
+            <div>
+                Lorem ipsum dolor sit.
+            </div>
+        </div>
+        <br />
+        <table>
+            <tbody>
+                <tr style="background-color: red">
+                    <td>
+                        Donna
+                    </td>
+                    <td>2016-10-01</td>
+                    <td></td>
+                </tr>
+                <tr style="background-color: red">
+                    <td>
+                        Nansen
+                    </td>
+                    <td>2016-11-05</td>
+                    <td>2016-11-14</td>
+                </tr>
+                <tr style="background-color: red">
+                    <td>
+                        Peppe
+                    </td>
+                    <td>2016-11-05</td>
+                    <td>2016-11-14</td>
+                </tr>
+                <tr>
+                    <td>
+                        J'Sira
+                    </td>
+                    <td>2012-02-28</td>
+                    <td>2012-03-14</td>
+                </tr>
+                <tr>
+                    <td>
+                        Billie
+                    </td>
+                    <td>2015-08-14</td>
+                    <td>2015-10-09</td>
+                </tr>
+                <tr>
+                    <td>
+                        Peyton
+                    </td>
+                    <td>2015-08-14</td>
+                    <td>2015-10-09</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
+</html>
