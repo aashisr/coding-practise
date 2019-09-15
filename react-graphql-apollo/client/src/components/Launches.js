@@ -19,17 +19,23 @@ const LAUNCHES_QUERY = gql`
 
 function Launches() {
     return (
-        <div>
+        <Fragment>
             <h1 className='display-4 my-3'>Launches</h1>
+            <div className='my-3'>
+                <p>
+                    <span className='px-3 mr-2 bg-success' /> = Success
+                </p>
+                <p>
+                    <span className='px-3 mr-2 bg-danger' /> = Fail
+                </p>
+            </div>
             <Query query={LAUNCHES_QUERY}>
                 {({ loading, error, data }) => {
                     if (loading) return <h4>Loading....</h4>;
                     if (error) {
-                        console.log(error);
-                        return <h4>Error: error</h4>;
+                        return <h4>Error: {error}</h4>;
                     }
 
-                    console.log(data);
                     return (
                         <Fragment>
                             {data.launches.map((launch) => (
@@ -39,7 +45,7 @@ function Launches() {
                     );
                 }}
             </Query>
-        </div>
+        </Fragment>
     );
 }
 
