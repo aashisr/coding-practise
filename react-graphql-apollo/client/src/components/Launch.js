@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
 
 // Create a graphql query to fetch a launch object
 const LAUNCH_QUERY = gql`
@@ -40,6 +41,7 @@ export default function Launch(props) {
                         mission_name,
                         flight_number,
                         launch_year,
+                        launch_date_local,
                         launch_success,
                         rocket: { rocket_id, rocket_name, rocket_type }
                     } = data.launch;
@@ -52,7 +54,9 @@ export default function Launch(props) {
                             <h4 className='mb-3'>Launch Details</h4>
                             <ul className='list-group'>
                                 <li className='list-group-item'>Flight Number: {flight_number}</li>
-                                <li className='list-group-item'>Lauch Year: {launch_year}</li>
+                                <li className='list-group-item'>
+                                    Lauch Date: <Moment format='DD.MM.YYYY HH:mm'>{launch_date_local}</Moment>
+                                </li>
                                 <li className='list-group-item'>
                                     Lauch Successful:{' '}
                                     <span className={launch_success ? 'text-success' : 'text-danger'}>{launch_success ? 'Yes' : 'No'}</span>
