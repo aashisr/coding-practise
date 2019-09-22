@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 
 // Create an initial state object
 const initialMathState = {
@@ -70,7 +70,7 @@ const myLogger = (store) => (next) => (action) => {
 // Store does not handle the actions, it only knows who is handling the actions (it is reducer)
 // combineReducers combines different reducers in the app to be one since createStore takes only one reducer
 // combineReducers({ mathReducer: mathReducer, userReducer: userReducer }) can be written as below if both key and value is same
-const store = createStore(combineReducers({ mathReducer, userReducer }), {}, applyMiddleware(myLogger, logger()));
+export const store = createStore(combineReducers({ mathReducer, userReducer }), {}, applyMiddleware(createLogger()));
 
 // Gets executed whenever the state is updated
 // store.getState gives the new updated state
@@ -81,7 +81,7 @@ store.subscribe(() => {
 // dispatch dispatches the action to the store
 // and store sends the action to the reducer
 // dispatch expects a javascript object
-store.dispatch({
+/* store.dispatch({
     type: 'ADD',
     payload: 10 // payload is the value passed to the reducer
-});
+}); */
