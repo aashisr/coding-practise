@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Main from './components/Main';
+import User from './components/User';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            username: 'Aashis'
+        };
+    }
+
+    changeUsername(newname) {
+        this.setState({
+            username: newname
+        });
+    }
+
+    render() {
+        return (
+            <div className='container'>
+                <Main changeUsername={this.changeUsername.bind(this)}></Main>
+                <User username={this.state.username}></User>
+            </div>
+        );
+    }
 }
 
 export default App;
