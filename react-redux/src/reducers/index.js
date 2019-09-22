@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
 
 // Create an initial state object
 const initialMathState = {
@@ -56,13 +57,20 @@ const userReducer = (state = initialUserState, action) => {
     }
 };
 
+// Create a middleware
+// next is the method provided by redux which must be executed to move forward
+const myLogger = (store) => (next) => (action) => {
+    console.log('Logged action: ', action);
+    next(action);
+};
+
 // Create a store where all the states are stored
 // Always takes two arguments, reducer and the initial state of the application
 // Initial state is now handled by the reducer itself. So, removed form createStore function
 // Store does not handle the actions, it only knows who is handling the actions (it is reducer)
 // combineReducers combines different reducers in the app to be one since createStore takes only one reducer
 // combineReducers({ mathReducer: mathReducer, userReducer: userReducer }) can be written as below if both key and value is same
-const store = createStore(combineReducers({ mathReducer, userReducer }));
+const store = createStore(combineReducers({ mathReducer, userReducer }), {}, applyMiddleware(myLogger, logger()));
 
 // Gets executed whenever the state is updated
 // store.getState gives the new updated state
